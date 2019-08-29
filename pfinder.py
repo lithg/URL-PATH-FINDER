@@ -5,7 +5,7 @@ Interesting Paths Finder
 Author: lithg
 github.com/lithg
 
-TODO: ROBOTS.TXT
+TODO: ROBOTS.TXT, REQUIREMENTS.TXT
 '''
 
 import urllib.request
@@ -34,7 +34,7 @@ print(Fore.RED + '''
 
 print(Fore.YELLOW + "        ################# - Interesting Paths Finder - #################")
 print(Fore.YELLOW + "        #                Works better with python 3.x                  #")
-print(Fore.YELLOW + "        #           Usage: python3 main.py -u <url> -l <wordlist>      #")
+print(Fore.YELLOW + "        #           Usage: python3 pfinder.py -u <url> -l <wordlist>      #")
 print(Fore.YELLOW + "        ################################################################\n\n")
 
 
@@ -107,10 +107,10 @@ def find_paths():
     total_time = end - start
 
     if len(found) > 0:
-        print(Fore.GREEN + '#-#-#-#-# [' + Fore.BLUE +str(len(found)) + Fore.GREEN + '] PATH FOUND(s) #-#-#-#-#')
+        print('\n' + Fore.GREEN + '#-#-#-#-# [' + Fore.BLUE + str(len(found)) + Fore.GREEN + '] PATH FOUND(s) #-#-#-#-#\n')
         for panel in found:
             found_count += 1
-            print('[' + str(found_count) + ']', url + path)
+            print('[' + Fore.BLUE + str(found_count) + Fore.GREEN + ']', + Fore.BLUE + url + Fore.YELLOW + panel)
 
     else:
         print(Fore.RED + '\nCannot find any path. Try another wordlist!')
@@ -131,7 +131,7 @@ if __name__ == '__main__':
         print(Fore.RED + '***********************************')
         print(Fore.RED + '* URL required to run the script! *')
         print(Fore.RED + '***********************************')
-        print(Fore.YELLOW + 'Usage: python3 main.py -u <url> -l <wordlist> \n')
+        print(Fore.YELLOW + 'Usage: python3 pfinder.py -u <url> -l <wordlist> \n')
 
     else:
         url = args.u[0]
