@@ -110,7 +110,7 @@ def find_paths():
         print('\n' + Fore.GREEN + '#-#-#-#-# [' + Fore.BLUE + str(len(found)) + Fore.GREEN + '] PATH FOUND(s) #-#-#-#-#\n')
         for panel in found:
             found_count += 1
-            print('[' + Fore.BLUE + str(found_count) + Fore.GREEN + ']', + Fore.BLUE + url + Fore.YELLOW + panel)
+            print('[' + Fore.BLUE + str(found_count) + Fore.GREEN + ']' + Fore.BLUE + url + Fore.YELLOW + panel)
 
     else:
         print(Fore.RED + '\nCannot find any path. Try another wordlist!')
