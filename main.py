@@ -9,10 +9,11 @@ github.com/lithg
 import urllib.request
 from urllib.error import URLError, HTTPError
 import time
+from datetime import datetime, timedelta
 
 
 url = ''
-wordlist = ''
+wordlist = 'paths.txt'
 
 
 def format_url(url):
@@ -27,17 +28,31 @@ def read_wordlist():
     global lines
 
     try:
-        with open('paths.txt') as path:
+        with open(wordlist) as path:
             lines = path.readlines()
 
     except:
-        print('eee')
+        print('Error while trying to read file.')
+
+
+def timing(total_time):
+
+    sec = timedelta(seconds=total_time)
+    d = datetime(1,1,1) + sec
+
+    total_time = "Timing: %dd:%dh:%dm:%ds" % (d.day-1, d.hour, d.minute, d.second)
+
+    return total_time
 
 
 def find_paths():
     read_wordlist()
     count = 0
+    found_count = 0
     found = []
+    global total_time
+
+    start = time.time()  # TIMER START
 
     for path in lines:
         path = path.rstrip()
@@ -49,19 +64,26 @@ def find_paths():
 
         except HTTPError:
             count += 1
-            print('[' + str(count) + ']', 'Trying:', path)
+            print('[' + str(count) + ']', 'Failed:', url + path)
 
         except URLError as e:
             print('Cannot run the script properly. Probably a URL issue.')
-            print('Reason: ' + e)
+            print('Reason:', e)
+            break
+
+    end = time.time()
+    total_time = end - start
 
     if len(found) > 0:
-        print('#-#-#-#-# [' + str(len(found)) + '] + PANEL FOUNDS #-#-#-#-#')
+        print('#-#-#-#-# [' + str(len(found)) + '] PATH FOUND(s) #-#-#-#-#')
         for panel in found:
-            print('[' + str(panel.index()) + ']', url + path)
+            found_count += 1
+            print('[' + str(found_count) + ']', url + path)
 
     else:
         print('Cannot find any path. Try another wordlist!')
+
+    print(timing(total_time))
 
 
 if __name__ == '__main__':
