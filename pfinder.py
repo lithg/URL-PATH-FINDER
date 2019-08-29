@@ -92,7 +92,7 @@ def find_paths():
         try:
 
             urllib.request.urlopen(format_url(url) + path)
-            print(Fore.YELLOW + '[' + Fore.GREEN + str(count) + Fore.YELLOW + ']', Fore.GREEN + 'Panel found! Path:', path)
+            print(Fore.YELLOW + '[' + Fore.GREEN + str(count) + Fore.YELLOW + ']', Fore.GREEN + 'Found! Path:', Fore.YELLOW + path)
             found.append(path)
 
         except HTTPError:
@@ -110,7 +110,7 @@ def find_paths():
         print('\n' + Fore.GREEN + '#-#-#-#-# [' + Fore.BLUE + str(len(found)) + Fore.GREEN + '] PATH FOUND(s) #-#-#-#-#\n')
         for panel in found:
             found_count += 1
-            print('[' + Fore.BLUE + str(found_count) + Fore.GREEN + ']' + Fore.BLUE + url + Fore.YELLOW + panel)
+            print('[' + Fore.BLUE + str(found_count) + Fore.GREEN + '] ' + Fore.BLUE + format_url(url) + Fore.YELLOW + panel)
 
     else:
         print(Fore.RED + '\nCannot find any path. Try another wordlist!')
