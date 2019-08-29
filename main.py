@@ -10,6 +10,20 @@ import urllib.request
 from urllib.error import URLError, HTTPError
 import time
 from datetime import datetime, timedelta
+from colorama import Fore
+
+print(Fore.RED + '''
+ ██▓███   ▄▄▄     ▄▄▄█████▓ ██░ ██      █████▒██▓ ███▄    █ ▓█████▄ ▓█████  ██▀███  
+▓██░  ██▒▒████▄   ▓  ██▒ ▓▒▓██░ ██▒   ▓██   ▒▓██▒ ██ ▀█   █ ▒██▀ ██▌▓█   ▀ ▓██ ▒ ██▒
+▓██░ ██▓▒▒██  ▀█▄ ▒ ▓██░ ▒░▒██▀▀██░   ▒████ ░▒██▒▓██  ▀█ ██▒░██   █▌▒███   ▓██ ░▄█ ▒
+▒██▄█▓▒ ▒░██▄▄▄▄██░ ▓██▓ ░ ░▓█ ░██    ░▓█▒  ░░██░▓██▒  ▐▌██▒░▓█▄   ▌▒▓█  ▄ ▒██▀▀█▄  
+▒██▒ ░  ░ ▓█   ▓██▒ ▒██▒ ░ ░▓█▒░██▓   ░▒█░   ░██░▒██░   ▓██░░▒████▓ ░▒████▒░██▓ ▒██▒
+▒▓▒░ ░  ░ ▒▒   ▓▒█░ ▒ ░░    ▒ ░░▒░▒    ▒ ░   ░▓  ░ ▒░   ▒ ▒  ▒▒▓  ▒ ░░ ▒░ ░░ ▒▓ ░▒▓░     
+░▒ ░       ▒   ▒▒ ░   ░     ▒ ░▒░ ░    ░      ▒ ░░ ░░   ░ ▒░ ░ ▒  ▒  ░ ░  ░  ░▒ ░ ▒░   
+░░         ░   ▒    ░       ░  ░░ ░    ░ ░    ▒ ░   ░   ░ ░  ░ ░  ░    ░     ░░   ░        by ''' + Fore.GREEN + 'LITHG' + '''
+               ░  ░         ░  ░  ░           ░           ░    ░       ░  ░   ░     
+                                                             ░                     
+''')
 
 
 url = ''
@@ -40,7 +54,7 @@ def timing(total_time):
     sec = timedelta(seconds=total_time)
     d = datetime(1,1,1) + sec
 
-    total_time = "Timing: %dd:%dh:%dm:%ds" % (d.day-1, d.hour, d.minute, d.second)
+    total_time = "\nTiming: %dd:%dh:%dm:%ds" % (d.day-1, d.hour, d.minute, d.second)
 
     return total_time
 
@@ -64,7 +78,7 @@ def find_paths():
 
         except HTTPError:
             count += 1
-            print('[' + str(count) + ']', 'Failed:', url + path)
+            print('[' + str(count) + ']', 'Failed:', format_url(url) + path)
 
         except URLError as e:
             print('Cannot run the script properly. Probably a URL issue.')
