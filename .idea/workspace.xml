@@ -12,16 +12,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+            <state relative-caret-position="300">
+              <caret line="101" column="74" lean-forward="true" selection-start-line="101" selection-start-column="74" selection-end-line="101" selection-end-column="74" />
+              <folding>
+                <element signature="e#90#111#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/paths.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="371">
@@ -59,8 +62,8 @@
         <option value="$PROJECT_DIR$/rwar.py" />
         <option value="$PROJECT_DIR$/rarqw.py" />
         <option value="$PROJECT_DIR$/easew.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/paths.txt" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -262,17 +265,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/paths.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="371">
           <caret line="7334" column="8" lean-forward="true" selection-start-line="7334" selection-start-column="8" selection-end-line="7334" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="101" column="74" lean-forward="true" selection-start-line="101" selection-start-column="74" selection-end-line="101" selection-end-column="74" />
+          <folding>
+            <element signature="e#90#111#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

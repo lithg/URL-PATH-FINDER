@@ -4,6 +4,8 @@
 Interesting Paths Finder
 Author: lithg
 github.com/lithg
+
+TODO: ROBOTS.TXT
 '''
 
 import urllib.request
@@ -94,7 +96,7 @@ def find_paths():
             found.append(path)
 
         except HTTPError:
-            print(Fore.YELLOW + '[' + Fore.BLUE + str(count) + Fore.YELLOW + ']', Fore.RED + 'Failed:', format_url(url) + path)
+            print(Fore.YELLOW + '[' + Fore.BLUE + str(count) + Fore.YELLOW + ']', Fore.RED + 'Failed:', format_url(url) + Fore.BLUE + path)
 
         except URLError as e:
             print('Cannot run the script properly. Probably a URL issue.')
