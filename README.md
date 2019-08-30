@@ -25,7 +25,7 @@ Instructions on how to use them in your own terminal are linked below.
 | Args | Example | Required |
 | ------ | ------ | ------  |
 | -u, -url | default: None | Yes |
-| -l -list | default: path.txt | No |
+| -l, -list | default: path.txt | No |
 | --robots | default: False | No |
 
 
