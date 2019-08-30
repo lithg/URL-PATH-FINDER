@@ -18,15 +18,15 @@ $ pip install -r requirements.txt
 $ python pfinder.py -u <url> -l <wordlist> --robots
 ```
 
-### Plugins
+### Arguments
 
 Instructions on how to use them in your own terminal are linked below.
 
-| Args | Example |
-| ------ | ------ |
-| -u, -url | http://example.com |
-| -l -list | default: path.txt |
-| --robots | default: False |
+| Args | Example | Required |
+| ------ | ------ | ------  |
+| -u, -url | default: None | Yes |
+| -l -list | default: path.txt | No |
+| --robots | default: False | No |
 
 
 ### Example
