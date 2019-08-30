@@ -54,6 +54,26 @@ def format_url(url):
 # -----------------------------------------------------
 
 
+def read_robots():
+    robots_path = format_url(url) + 'robots.txt'
+
+    print(Fore.YELLOW + '[' + Fore.BLUE + '+' + Fore.YELLOW + ']' + Fore.BLUE + ' Find paths in robots.txt...')
+
+    try:
+        data = urllib.request.urlopen(robots_path).read().decode("utf-8")
+        for item in data.split("\n"):
+            if item.startswith("Disallow:"):
+                robots_found = item[11:]
+                found.append(robots_found + Fore.YELLOW + ' (ROBOTS.TXT)')
+                print(Fore.YELLOW + '[' + Fore.BLUE + '*' + Fore.YELLOW + ']' + Fore.BLUE + " Disallow rule found:", robots_found)
+
+    except HTTPError:
+        print(Fore.YELLOW + '[' + Fore.RED + 'x' + Fore.YELLOW + ']' + Fore.BLUE + " Could not retrieve robots.txt!")
+
+
+# -----------------------------------------------------
+
+
 def read_wordlist():
     global lines
 
@@ -83,17 +103,20 @@ def find_paths():
     read_wordlist()
     count = 0
     found_count = 0
+    global found
     found = []
     global total_time
 
     start = time.time()  # TIMER START
+
+    if robots:
+        read_robots()
 
     for path in lines:
         path = path.rstrip()
         count += 1
 
         try:
-
             urllib.request.urlopen(format_url(url) + path)
             print(Fore.YELLOW + '[' + Fore.GREEN + str(count) + Fore.YELLOW + ']', Fore.GREEN + 'Found! Path:', Fore.YELLOW + path)
             found.append(path)
@@ -110,10 +133,10 @@ def find_paths():
     total_time = end - start
 
     if len(found) > 0:
-        print('\n' + Fore.GREEN + '#-#-#-#-# [' + Fore.BLUE + str(len(found)) + Fore.GREEN + '] PATH FOUND(s) #-#-#-#-#\n')
-        for panel in found:
+        print('\n' + Fore.GREEN + '*#*#*#*#*#* [' + Fore.BLUE + str(len(found)) + Fore.GREEN + '] PATH(s) FOUND(s) *#*#*#*#*#*\n')
+        for path in found:
             found_count += 1
-            print('[' + Fore.BLUE + str(found_count) + Fore.GREEN + '] ' + Fore.BLUE + format_url(url) + Fore.YELLOW + panel)
+            print(Fore.YELLOW + '[' + Fore.BLUE + str(found_count) + Fore.YELLOW + '] ' + Fore.BLUE + format_url(url) + Fore.GREEN + path)
 
     else:
         print(Fore.RED + '\nCannot find any path. Try another wordlist!')
@@ -125,22 +148,28 @@ def find_paths():
 
 
 if __name__ == '__main__':
+    global robots
+    robots = False
     parser = argparse.ArgumentParser()
     parser.add_argument('-u', '-url', nargs=1, help='Base URL', default=None, type=str)
     parser.add_argument('-l', '-list', nargs=1, help='Wordlist to use', default="paths.txt", type=str)
+    parser.add_argument('--robots', action='store_true', help='Parse robots.txt file', default=False)
     args = parser.parse_args()
 
     if not args.u:
         print(Fore.RED + '***********************************')
         print(Fore.RED + '* URL required to run the script! *')
         print(Fore.RED + '***********************************')
-        print(Fore.YELLOW + 'Usage: python3 pfinder.py -u <url> -l <wordlist> \n')
+        print(Fore.YELLOW + 'Usage: python3 pfinder.py -u <url> -l <wordlist> --robots \n')
 
     else:
         url = args.u[0]
 
     if args.l:
         wordlist = args.l
+
+    if args.robots:
+        robots = True
 
     if len(sys.argv) > 1:
         find_paths()
