@@ -44,3 +44,9 @@ $ python pfinder.py -h
 ### Todos
 
  - Graphic User Interface
+
+### Screenshots
+
+[![P|Finder](https://i.imgur.com/Kw8PL3G.png)](https://github.com/lithg/URL-PATH-FINDER/)
+
+[![P|Finder](https://i.imgur.com/1GbjjHB.png)](https://github.com/lithg/URL-PATH-FINDER/)
