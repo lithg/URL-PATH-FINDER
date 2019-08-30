@@ -4,8 +4,6 @@
 Interesting Paths Finder
 Author: lithg
 github.com/lithg
-
-TODO: ROBOTS.TXT
 '''
 
 import urllib.request
