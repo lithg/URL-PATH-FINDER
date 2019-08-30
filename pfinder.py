@@ -32,7 +32,7 @@ print(Fore.RED + '''
 
 print(Fore.YELLOW + "        ################# - Interesting Paths Finder - #################")
 print(Fore.YELLOW + "        #                Works better with python 3.x                  #")
-print(Fore.YELLOW + "        #       Usage: python3 pfinder.py -u <url> -l <wordlist>      #")
+print(Fore.YELLOW + "        #  Usage: python3 pfinder.py -u <url> -l <wordlist> --robots   #")
 print(Fore.YELLOW + "        ################################################################\n\n")
 
 
