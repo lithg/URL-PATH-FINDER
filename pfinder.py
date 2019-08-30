@@ -5,7 +5,7 @@ Interesting Paths Finder
 Author: lithg
 github.com/lithg
 
-TODO: ROBOTS.TXT, REQUIREMENTS.TXT
+TODO: ROBOTS.TXT
 '''
 
 import urllib.request
@@ -45,6 +45,9 @@ def format_url(url):
 
     if not url.endswith('/'):
         url = url + '/'
+
+    if url.startswith('www.'):
+        url = url.replace('www.', 'http://')
 
     return url
 
