@@ -22,11 +22,11 @@ $ python pfinder.py -u <url> -l <wordlist> --robots
 
 Instructions on how to use them in your own terminal are linked below.
 
-| Args | Example | Required |
+| Args | Default | Required |
 | ------ | ------ | ------  |
-| -u, -url | default: None | Yes |
-| -l, -list | default: path.txt | No |
-| --robots | default: False | No |
+| -u, -url | None | Yes |
+| -l, -list | path.txt | No |
+| --robots | False | No |
 
 
 ### Example
@@ -35,6 +35,12 @@ Parsing Robots.txt:
 ```sh
 $ python pfinder.py -u http://example.com -l wordlist.txt --robots
 ```
+
+Show help:
+```sh
+$ python pfinder.py -h
+```
+
 ### Todos
 
  - Graphic User Interface
