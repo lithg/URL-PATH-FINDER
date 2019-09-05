@@ -55,7 +55,7 @@ def format_url(url):
 def read_robots():
     robots_path = format_url(url) + 'robots.txt'
 
-    print(Fore.YELLOW + '[' + Fore.BLUE + '+' + Fore.YELLOW + ']' + Fore.BLUE + ' Find paths in robots.txt...')
+    print(Fore.YELLOW + '[' + Fore.BLUE + '+' + Fore.YELLOW + ']' + Fore.BLUE + ' Searching paths in robots.txt...')
 
     try:
         data = urllib.request.urlopen(robots_path).read().decode("utf-8")
