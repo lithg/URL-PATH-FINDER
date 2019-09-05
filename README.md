@@ -4,7 +4,7 @@ Find interesting website paths via terminal.
 
   - Robots.txt parser
   - Use your wordlist
-  - For Educational Purposes Only
+  - For Legal Purposes Only
 
 
 ### Installation
