@@ -2,6 +2,7 @@ admin1.php
 admin1.html
 admin2.php
 admin2.html
+controle/
 yonetim.php
 yonetim.html
 yonetici.php
@@ -15,6 +16,7 @@ adm/
 configuration/
 configure/
 websvn/
+controle
 admin/
 admin/account.php
 admin/account.html
