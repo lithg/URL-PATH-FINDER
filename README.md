@@ -44,7 +44,6 @@ $ python pfinder.py -h
 ### Todos
 
  - Graphic User Interface
- - Progress
  - Find subdomains
 
 ### Screenshots
