@@ -85,6 +85,15 @@ def read_wordlist():
 # -----------------------------------------------------
 
 
+def progress(index):
+    path_length = len(lines)
+    percent = round((index / path_length) * 100, 1)
+    percent = str(percent) + '%  ' + '[' + str(index) + '/' + str(path_length) + ']'
+
+    return percent
+
+# -----------------------------------------------------
+
 def timing(total_time):
 
     sec = timedelta(seconds=total_time)
@@ -99,7 +108,7 @@ def timing(total_time):
 
 def find_paths():
     read_wordlist()
-    count = 0
+    index = 0
     found_count = 0
     global found
     found = []
@@ -112,15 +121,15 @@ def find_paths():
 
     for path in lines:
         path = path.rstrip()
-        count += 1
+        index += 1
 
         try:
             urllib.request.urlopen(format_url(url) + path)
-            print(Fore.YELLOW + '[' + Fore.GREEN + str(count) + Fore.YELLOW + ']', Fore.GREEN + 'Found! Path:', Fore.YELLOW + path)
+            print(Fore.YELLOW + '[' + Fore.GREEN + str(index) + Fore.YELLOW + ']', Fore.GREEN + 'Found! Path:', Fore.YELLOW + path + ' -> ' + progress(index))
             found.append(path)
 
         except HTTPError:
-            print(Fore.YELLOW + '[' + Fore.BLUE + str(count) + Fore.YELLOW + ']', Fore.RED + 'Failed:', format_url(url) + Fore.BLUE + path)
+            print(Fore.YELLOW + '[' + Fore.BLUE + str(index) + Fore.YELLOW + ']', Fore.RED + 'Fai   led:', format_url(url) + Fore.BLUE + path + Fore.YELLOW + ' -> ' + progress(index))
 
         except URLError as e:
             print('Cannot run the script properly. Probably a URL issue.')
@@ -131,7 +140,7 @@ def find_paths():
     total_time = end - start
 
     if len(found) > 0:
-        print('\n' + Fore.GREEN + '*#*#*#*#*#* [' + Fore.BLUE + str(len(found)) + Fore.GREEN + '] PATH(s) FOUND(s) *#*#*#*#*#*\n')
+        print('\n' + Fore.GREEN + '########## [' + Fore.BLUE + str(len(found)) + Fore.GREEN + '] PATH(s) FOUND(s) ##########\n')
         for path in found:
             found_count += 1
             print(Fore.YELLOW + '[' + Fore.BLUE + str(found_count) + Fore.YELLOW + '] ' + Fore.BLUE + format_url(url) + Fore.GREEN + path)
