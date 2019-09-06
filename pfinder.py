@@ -63,7 +63,7 @@ def read_robots():
             if item.startswith("Disallow:"):
                 robots_found = item[11:]
                 found.append(robots_found + Fore.YELLOW + ' (ROBOTS.TXT)')
-                print(Fore.YELLOW + '[' + Fore.BLUE + '*' + Fore.YELLOW + ']' + Fore.BLUE + " Disallow rule found:", robots_found)
+                print(Fore.YELLOW + '[' + Fore.BLUE + '*' + Fore.YELLOW + ']' + Fore.BLUE + " Disallow rule found:" + Fore.YELLOW, robots_found)
 
     except HTTPError:
         print(Fore.YELLOW + '[' + Fore.RED + 'x' + Fore.YELLOW + ']' + Fore.BLUE + " Could not retrieve robots.txt!")
@@ -103,10 +103,17 @@ def timing(total_time):
 
     return total_time
 
+# -----------------------------------------------------s
+
+# def test():
+#     a = urllib.request.urlopen('http://google.com')
+#     print(a.getcode())
+#
+
 # -----------------------------------------------------
 
-
 def find_paths():
+    # test()
     read_wordlist()
     index = 0
     found_count = 0
@@ -124,12 +131,12 @@ def find_paths():
         index += 1
 
         try:
-            urllib.request.urlopen(format_url(url) + path)
-            print(Fore.YELLOW + '[' + Fore.GREEN + str(index) + Fore.YELLOW + ']', Fore.GREEN + 'Found! Path:', Fore.YELLOW + path + ' -> ' + progress(index))
+            code = urllib.request.urlopen(format_url(url) + path).getcode()
+            print(Fore.YELLOW + '[' + Fore.GREEN + str(index) + Fore.YELLOW + ']', Fore.GREEN + 'Found! Path:', Fore.YELLOW + path + ' -> ' + progress(index) + ' [CODE : ' + str(code) + ']')
             found.append(path)
 
         except HTTPError:
-            print(Fore.YELLOW + '[' + Fore.BLUE + str(index) + Fore.YELLOW + ']', Fore.RED + 'Fai   led:', format_url(url) + Fore.BLUE + path + Fore.YELLOW + ' -> ' + progress(index))
+            print(Fore.YELLOW + '[' + Fore.BLUE + str(index) + Fore.YELLOW + ']', Fore.RED + 'Failed:', format_url(url) + Fore.BLUE + path + Fore.YELLOW + ' -> ' + progress(index))
 
         except URLError as e:
             print('Cannot run the script properly. Probably a URL issue.')
@@ -139,7 +146,7 @@ def find_paths():
     end = time.time()
     total_time = end - start
 
-    if len(found) > 0:
+    if len(found) > 0:  
         print('\n' + Fore.GREEN + '########## [' + Fore.BLUE + str(len(found)) + Fore.GREEN + '] PATH(s) FOUND(s) ##########\n')
         for path in found:
             found_count += 1
@@ -148,7 +155,7 @@ def find_paths():
     else:
         print(Fore.RED + '\nCannot find any path. Try another wordlist!')
 
-    print(timing(total_time))
+    print(timing(total_time) + '\n')
 
 
 # -----------------------------------------------------
