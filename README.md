@@ -14,7 +14,7 @@ Pfinder requires [Python](https://www.python.org/) 3.x+ to run.
 Install the dependencies to run the script.
 
 ```sh
-$ https://github.com/lithg/URL-PATH-FINDER.git
+$ git clone https://github.com/lithg/URL-PATH-FINDER.git
 $ pip install -r requirements.txt
 $ python3 pfinder.py -u <url> -l <wordlist> --robots --sub
 ```
