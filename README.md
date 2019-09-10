@@ -1,5 +1,7 @@
 # URL PATH FINDER
 
+[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+
 Find interesting website paths and subdomains via terminal.
 
   - Robots.txt parser
