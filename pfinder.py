@@ -138,7 +138,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-u', '-url', nargs=1, help='URL Base <mandatory>', required=True, default=None, type=str)
-    parser.add_argument('-w', '-wordlist', nargs=1, help='Scan paths in wordlist.txt file', type=str, default='wordlist.txt')
+    parser.add_argument('-w', '-wordlist', nargs=1, help='Scan paths in paths.txt file', type=str, default='paths.txt')
     parser.add_argument('--robots', action='store_true', help='Scan paths in robots.txt', default=False)
     parser.add_argument('--sub', action='store_true', help='Scan subdomains in wordlist.txt file', default=False)
     args = parser.parse_args()
@@ -148,9 +148,9 @@ if __name__ == '__main__':
         print(Fore.RED + '*     URL is required to run script!       *')
         print(Fore.RED + '********************************************')
         print(Fore.YELLOW + 'Usage: python3 pfinder.py -u <url> --robots --sub\n')
-    if not pathlib.Path('wordlist.txt').exists() and not pathlib.Path(args.w[0]).exists():
+    if not pathlib.Path('paths.txt').exists() and not pathlib.Path(args.w[0]).exists():
         print(Fore.RED + '*************************************************************************')
-        print(Fore.RED + '*          File wordlist.txt not found in this directory.               *')
+        print(Fore.RED + '*          File paths.txt not found in this directory.               *')
         print(Fore.RED + '*  Use the -f argument to enter the correct path of your wordlist file. *')
         print(Fore.RED + '*************************************************************************')
     else:
