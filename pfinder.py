@@ -28,13 +28,13 @@ print(Fore.RED + '''
 ▒██▒ ░  ░ ▓█   ▓██▒ ▒██▒ ░ ░▓█▒░██▓   ░▒█░   ░██░▒██░   ▓██░░▒████▓ ░▒████▒░██▓ ▒██▒
 ▒▓▒░ ░  ░ ▒▒   ▓▒█░ ▒ ░░    ▒ ░░▒░▒    ▒ ░   ░▓  ░ ▒░   ▒ ▒  ▒▒▓  ▒ ░░ ▒░ ░░ ▒▓ ░▒▓░     
 ░▒ ░       ▒   ▒▒ ░   ░     ▒ ░▒░ ░    ░      ▒ ░░ ░░   ░ ▒░ ░ ▒  ▒  ░ ░  ░  ░▒ ░ ▒░   
-░░         ░   ▒    ░       ░  ░░ ░    ░ ░    ▒ ░   ░   ░ ░  ░ ░  ░    ░     ░░   ░        by ''' + Fore.GREEN + 'DESEC' + '''
+░░         ░   ▒    ░       ░  ░░ ░    ░ ░    ▒ ░   ░   ░ ░  ░ ░  ░    ░     ░░   ░        by ''' + Fore.GREEN + 'LITHG' + '''
                ░  ░         ░  ░  ░           ░           ░    ░       ░  ░   ░     
                                                              ░                     
 \n''')
 
 print(Fore.YELLOW + "        #################### - URL PATH FINDER - #####################")
-print(Fore.YELLOW + "        #                    -  Desec Academy  -                     #")
+print(Fore.YELLOW + "        #                       -  PFINDER  -                        #")
 print(Fore.YELLOW + "        #    Type for help: python3 pfinder.py --help                #")
 print(Fore.YELLOW + "        #    Example: python3 pfinder.py -u example.com --robots     #")
 print(Fore.YELLOW + "        ##############################################################\n\n")
@@ -46,12 +46,12 @@ def chunks(l, n):
         yield l[i:i+n]
 
 def read_wordlist():
-    wordlist = args.f
+    wordlist = args.w
     if isinstance(wordlist, list):
-        wordlist = args.f[0]
+        wordlist = args.w[0]
     try:
-        with open(wordlist) as f:
-            lines = f.readlines()
+        with open(wordlist) as w:
+            lines = w.readlines()
             return lines
     except IOError:
         print(Fore.RED + 'Error reading wordlist file!')
@@ -138,7 +138,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-u', '-url', nargs=1, help='URL Base <mandatory>', required=True, default=None, type=str)
-    parser.add_argument('-f', '-file', nargs=1, help='Scan paths in wordlist.txt file', type=str, default='wordlist.txt')
+    parser.add_argument('-w', '-wordlist', nargs=1, help='Scan paths in wordlist.txt file', type=str, default='wordlist.txt')
     parser.add_argument('--robots', action='store_true', help='Scan paths in robots.txt', default=False)
     parser.add_argument('--sub', action='store_true', help='Scan subdomains in wordlist.txt file', default=False)
     args = parser.parse_args()
@@ -148,7 +148,7 @@ if __name__ == '__main__':
         print(Fore.RED + '*     URL is required to run script!       *')
         print(Fore.RED + '********************************************')
         print(Fore.YELLOW + 'Usage: python3 pfinder.py -u <url> --robots --sub\n')
-    if not pathlib.Path('wordlist.txt').exists() and not pathlib.Path(args.f[0]).exists():
+    if not pathlib.Path('wordlist.txt').exists() and not pathlib.Path(args.w[0]).exists():
         print(Fore.RED + '*************************************************************************')
         print(Fore.RED + '*          File wordlist.txt not found in this directory.               *')
         print(Fore.RED + '*  Use the -f argument to enter the correct path of your wordlist file. *')
